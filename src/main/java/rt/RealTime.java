@@ -14,8 +14,7 @@ public class RealTime extends PluginBase {
     }
 
     public int getTime() {
-        String rdat = new SimpleDateFormat("HHmm").format(new Date()) + "0";
-        int time = Integer.parseInt(rdat);
+        int time = Integer.parseInt(new SimpleDateFormat("HHmm").format(new Date()) + "0");
         time -= 6000;
         if (time < 0) {
             time += 24000;
@@ -31,7 +30,7 @@ public class RealTime extends PluginBase {
 
         @Override
         public void run() {
-            for (Level level : getServer().getLevels().values()) {
+            for (Level level : getServer().getLevels()) {
                 level.setTime(getTime());
             }
         }
